@@ -91,6 +91,44 @@
       margin: 10px;
       cursor: pointer;
     }
+
+    .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
   </style>
 
 </head>
@@ -102,8 +140,11 @@
     <div class="wrapper">
 
       <!-- Start email Icon -->
-      <div id="email" onclick="navigate(this.id)" class="social">
-        <span class="icon email"><i class="fa-solid fa-envelope"></i></span>
+      <div class="tooltip">
+        <div id="email" onclick="navigate(this.id)" onmouseout="outFunc()" class="social">
+          <span class="tooltiptext" id="myTooltip">Copy</span>
+          <span class="icon email"><i class="fa-solid fa-envelope"></i></span>
+        </div>
       </div>
       <!-- End email Icon -->
 
@@ -136,10 +177,13 @@
         //if you want the URL to open in the same window use '_parent'  instead of '_blank'
         
         if (id === "blog")
-          window.open("https://blog.shorouk.dev", '_blank').focus(); //Add the url to your blog
+          window.open("", '_blank').focus(); //Add the url to your blog
 
         else if (id === "email") {
-          window.open("mailto:fabianomanschein2@gmail.com", '_blank').focus();
+          var email = "fabianomanschein2@gmail.com"
+          navigator.clipboard.writeText(email);
+          var tooltip = document.getElementById("myTooltip");
+          tooltip.innerHTML = "Email copied";
         }
         else if (id === "linkedin") {
           window.open("https://www.linkedin.com/in/fabianomanschein/", '_blank').focus();
@@ -147,6 +191,11 @@
         else if (id === "github") {
           window.open("https://github.com/Fabulani", '_blank').focus();
         }
+      }
+
+      function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy";
       }
 
     </script>
