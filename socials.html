@@ -107,22 +107,22 @@
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 150%;
-  left: 50%;
+  top: -5px;
+  right: 105%;
   margin-left: -75px;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 .tooltip .tooltiptext::after {
-  content: "";
+  content: " ";
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
+  top: 50%;
+  left: 100%; /* To the right of the tooltip */
+  margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: transparent transparent transparent #555;
 }
 
 .tooltip:hover .tooltiptext {
