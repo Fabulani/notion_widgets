@@ -140,11 +140,8 @@
     <div class="wrapper">
 
       <!-- Start email Icon -->
-      <div class="tooltip">
-        <div id="email" onclick="navigate(this.id)" onmouseout="outFunc()" class="social">
-          <span class="tooltiptext" id="myTooltip">Copy</span>
-          <span class="icon email"><i class="fa-solid fa-envelope"></i></span>
-        </div>
+      <div id="email" onclick="navigate(this.id)" onmouseout="outFunc()" class="social">
+        <span class="icon email"><i class="fa-solid fa-envelope"></i></span>
       </div>
       <!-- End email Icon -->
 
@@ -180,10 +177,7 @@
           window.open("", '_blank').focus(); //Add the url to your blog
 
         else if (id === "email") {
-          var email = "fabianomanschein2@gmail.com"
-          navigator.clipboard.writeText(email);
-          var tooltip = document.getElementById("myTooltip");
-          tooltip.innerHTML = "Email copied";
+          window.open("mailto:fabianomanschein2@gmail.com", '_blank').focus();
         }
         else if (id === "linkedin") {
           window.open("https://www.linkedin.com/in/fabianomanschein/", '_blank').focus();
